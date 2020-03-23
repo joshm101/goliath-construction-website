@@ -41,6 +41,7 @@ const Layout: FunctionComponent = ({ children }) => {
           button {
             position: absolute;
             right: 0;
+            height: 64px;
           }
         `}
       </style>
