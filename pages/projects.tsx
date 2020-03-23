@@ -1,10 +1,12 @@
 import React from 'react'
 
+import Layout from '../components/Layout'
+
 const Projects = () => {
   return (
-    <div>
+    <Layout>
       <h2>Projects</h2>
-    </div>
+    </Layout>
   )
 }
 

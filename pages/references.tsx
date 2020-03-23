@@ -1,10 +1,12 @@
 import React from 'react'
 
+import Layout from '../components/Layout'
+
 const References = () => {
   return (
-    <div>
+    <Layout>
       <h2>References</h2>
-    </div>
+    </Layout>
   )
 }
 
