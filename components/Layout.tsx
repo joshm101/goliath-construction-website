@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import clsx from 'clsx'
 
-import MobileNav from '../components/MobileNav'
+import MobileNav from './MobileNav'
 
 const Layout: FunctionComponent = ({ children }) => {
   const [navOpen, setNavOpen] = useState(false)
@@ -36,7 +36,7 @@ const Layout: FunctionComponent = ({ children }) => {
             z-index: 10;
             height: 100%;
             position: relative;
-            background: #ddd;
+            background: #171717;
           }
           button {
             position: absolute;
@@ -54,8 +54,8 @@ const Layout: FunctionComponent = ({ children }) => {
           body {
             width: 100%;
             height: 100%;
-            background: #ddd;
-            color: #111;
+            background: #171717;
+            color: #d3cec8;
             margin: 0;
           }
           h1, h2, h3, h4, h5, h6 {
