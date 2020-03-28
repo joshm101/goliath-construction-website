@@ -102,7 +102,6 @@ const Layout: FunctionComponent = ({ children }) => {
 
           .logo {
             text-align: center;
-            flex-shrink: 0;
           }
 
           .logo h1 {
@@ -142,11 +141,29 @@ const Layout: FunctionComponent = ({ children }) => {
             .content--nav-open {
               transform: translate(-79%, 0);
             }
+
+            .logo h2 {
+              font-size: 28px;
+              letter-spacing: 2px;
+            }
+
+            .logo h1 {
+              font-size: 35px;
+            }
           }
 
           @media (min-width: 769px and max-width: 1024px) {
             .banner-placeholder {
               height: 400px;
+            }
+
+            .logo h1 {
+              font-size: 30px;
+            }
+
+            .logo h2 {
+              font-size: 25px;
+              letter-spacing: 1px;
             }
           }
 
@@ -156,9 +173,34 @@ const Layout: FunctionComponent = ({ children }) => {
               display: none;
             }
 
+            .logo {
+              flex-shrink: 0;
+            }
+
             .desktop-nav-container {
               visibility: visible;
               display: block;
+            }
+          }
+
+          @media (max-width: 540px) {
+            .logo {
+              display: flex;
+            }
+
+            .logo h2 {
+              font-size: 24px;
+              letter-spacing: 2px;
+              align-self: center;
+            }
+
+            .logo h1 {
+              display: none;
+              visibility: hidden;
+            }
+
+            .menu-button {
+              align-self: center;
             }
           }
 
