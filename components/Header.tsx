@@ -20,6 +20,7 @@ const Header: FunctionComponent<HeaderProps> = ({ children, style }) => {
             left: 0;
             right: 0;
             padding: 20px;
+            z-index: 9;
           }
           div {
             display: flex;

@@ -3,7 +3,8 @@ import React, {
   useState,
   useEffect,
   useRef
-} from 'react';
+} from 'react'
+import { ParallaxProvider } from 'react-scroll-parallax'
 import clsx from 'clsx'
 
 import MobileNav from './MobileNav'
@@ -45,43 +46,29 @@ const Layout: FunctionComponent = ({ children }) => {
     transition: 'background-color 200ms'
   }
 
-  const dummyArray = Array.from({ length: 20 }, (_, key) => key)
-
   return (
-    <div className="container">
-      <MobileNav />
-      <div className={classes} style={{ overflow: 'hidden' }}>
-        <Header style={headerStyles}>
-          <div className="logo">
-            <h1>G</h1>
-            <br />
-            <h2>Goliath Construction</h2>
-          </div>
-          <div className="desktop-nav-container">
-            <DesktopNav />
-          </div>
-          <div className="menu-button">
-            <HamburgerMenuButton
-              onClick={() => setNavOpen(!navOpen)}
-            />
-          </div>
-        </Header>
-        <div style={{ height: '100%' }}>
-          <div className="banner-placeholder">
-            <h3>Banner Image Placeholder</h3>
-          </div>
-          {dummyArray.map(value => (
-            <div key={value}>
-              <h2 className="dummy-text">
-                Content to trigger overflow
-              </h2>
+    <ParallaxProvider>
+      <div className="container">
+        <MobileNav />
+        <div className={classes} style={{ overflow: 'hidden' }}>
+          <Header style={headerStyles}>
+            <div className="logo">
+              <h1>G</h1>
               <br />
-              <br />
-              <br />
-              <br />
+              <h2>Goliath Construction</h2>
             </div>
-          ))}
-          {children}
+            <div className="desktop-nav-container">
+              <DesktopNav />
+            </div>
+            <div className="menu-button">
+              <HamburgerMenuButton
+                onClick={() => setNavOpen(!navOpen)}
+              />
+            </div>
+          </Header>
+          <div style={{ height: '100%' }}>
+            {children}
+          </div>
         </div>
       </div>
       <style jsx>
@@ -120,17 +107,6 @@ const Layout: FunctionComponent = ({ children }) => {
           .desktop-nav-container {
             visibility: hidden;
             display: none;
-          }
-
-          .banner-placeholder {
-            height: 315px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 20px;
-
-            color: #333;
           }
 
           @media (max-width: 768px) {
@@ -213,13 +189,7 @@ const Layout: FunctionComponent = ({ children }) => {
       </style>
       <style jsx global>
         {`
-          html {
-            width: 100%;
-            height: 100%;
-          }
           body {
-            width: 100%;
-            height: 100%;
             background: #171717;
             color: #d3cec8;
             margin: 0;
@@ -228,13 +198,9 @@ const Layout: FunctionComponent = ({ children }) => {
           h1, h2, h3, h4, h5, h6 {
             margin: 0;
           }
-          #__next {
-            height: 100%;
-            width: 100%;
-          }
         `}
       </style>
-    </div>
+    </ParallaxProvider>
   );
 };
 
