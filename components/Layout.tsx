@@ -54,7 +54,6 @@ const Layout: FunctionComponent = ({ children }) => {
           <Header style={headerStyles}>
             <div className="logo">
               <h1>G</h1>
-              <br />
               <h2>Goliath Construction</h2>
             </div>
             <div className="desktop-nav-container">
@@ -92,12 +91,15 @@ const Layout: FunctionComponent = ({ children }) => {
           }
 
           .logo h1 {
-            font-size: 40px;
+            font-size: 45px;
+            line-height: 45px;
           }
 
           .logo h2 {
             font-size: 30px;
-            letter-spacing: 2px;
+            line-height: 50px;
+            letter-spacing: 4px;
+            font-weight: 400;
           }
 
           .menu-button {
@@ -124,7 +126,7 @@ const Layout: FunctionComponent = ({ children }) => {
             }
 
             .logo h1 {
-              font-size: 35px;
+              font-size: 40px;
             }
           }
 
@@ -194,6 +196,7 @@ const Layout: FunctionComponent = ({ children }) => {
             color: #d3cec8;
             margin: 0;
             overflow: ${navOpen ? 'hidden' : 'auto'};
+            font-family: 'Oswald', sans-serif;
           }
           h1, h2, h3, h4, h5, h6 {
             margin: 0;
@@ -202,8 +205,14 @@ const Layout: FunctionComponent = ({ children }) => {
           .parallax-banner-layer-0 {
             filter: brightness(0.65);
           }
+
         `}
       </style>
+      
+      {/*https://github.com/zeit/next.js/issues/512#issuecomment-367164248*/}
+      <style dangerouslySetInnerHTML={{__html: `
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+      `}}/>
     </ParallaxProvider>
   );
 };
