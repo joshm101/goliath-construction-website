@@ -206,9 +206,13 @@ const Layout: FunctionComponent = ({ children }) => {
             filter: brightness(0.65);
           }
 
-          @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
         `}
       </style>
+      
+      {/*https://github.com/zeit/next.js/issues/512#issuecomment-367164248*/}
+      <style dangerouslySetInnerHTML={{__html: `
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+      `}}/>
     </ParallaxProvider>
   );
 };
