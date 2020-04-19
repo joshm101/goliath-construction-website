@@ -23,6 +23,10 @@ const DummyContent = () => {
           .content {
             text-align: center;
           }
+
+          h2 {
+            font-weight: 200;
+          }
         `}
       </style>
     </div>
