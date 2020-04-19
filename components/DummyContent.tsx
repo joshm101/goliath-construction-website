@@ -26,6 +26,7 @@ const DummyContent = () => {
 
           h2 {
             font-weight: 200;
+            font-size: 20px;
           }
         `}
       </style>

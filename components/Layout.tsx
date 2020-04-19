@@ -99,7 +99,7 @@ const Layout: FunctionComponent = ({ children }) => {
             font-size: 30px;
             line-height: 50px;
             letter-spacing: 4px;
-            font-weight: 300;
+            font-weight: 400;
           }
 
           .menu-button {
