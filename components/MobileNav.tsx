@@ -5,7 +5,7 @@ import { NAV_LINKS } from '../constants'
 
 const MobileNav = () => {
   return (
-    <div>
+    <div className="mobile-nav-wrapper">
       <nav>
         <div className="nav-container">
           <ul>
@@ -54,7 +54,18 @@ const MobileNav = () => {
             top: 0;
             bottom: 0;
             right: 0;
-            z-index: 1;
+          }
+
+          .mobile-nav-wrapper {
+            visibility: hidden;
+            display: none;
+          }
+
+          @media (max-width: 768px) {
+            .mobile-nav-wrapper {
+              visibility: visible;
+              display: block;
+            }
           }
         `}
       </style>
