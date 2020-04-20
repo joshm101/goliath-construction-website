@@ -38,7 +38,7 @@ const About = () => {
               During construction, our services include quality control, safety management, and construction administration. Our extensive experience in completing high-end quality projects on time and within budget informs everything we do as a Construction Manager.  We help owners identify and hire the right design and consultant teams, and then provide the leadership and resources required to make these projects successful.
             </p>
             <p>
-              We keep projects on time and within budget and teams working together.  Our emphasis on collaboration creates teamwork between our owner, and construction team. Our highest priority is the satisfaction of the clients project and the quality of out finished work.
+              We keep projects on time and within budget and teams working together. Our emphasis on collaboration creates teamwork between our owner, and construction team. Our highest priority is the satisfaction of the clients project and the quality of our finished work.
             </p>
           </div>
           <div className="image-container">
