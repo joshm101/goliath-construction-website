@@ -3,6 +3,7 @@ import { ParallaxBanner } from 'react-scroll-parallax'
 
 import Layout from '../components/Layout'
 import DummyContent from '../components/DummyContent'
+import PageContentContainer from '../components/PageContentContainer'
 
 import { makeParallaxProps } from '../utils'
 
@@ -19,7 +20,9 @@ const References = () => {
   return (
     <Layout>
       <ParallaxBanner {...parallaxProps} />
-      <DummyContent />
+      <PageContentContainer>
+        <DummyContent />
+      </PageContentContainer>
     </Layout>
   )
 }

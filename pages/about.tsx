@@ -40,6 +40,12 @@ const About = () => {
             <p>
               We keep projects on time and within budget and teams working together. Our emphasis on collaboration creates teamwork between our owner, and construction team. Our highest priority is the satisfaction of the clients project and the quality of our finished work.
             </p>
+            <p>
+              Give us a call at <a href="tel:+1-310-902-6616">(310) 902-6616</a>.
+            </p>
+            <p>
+              License #1056541-B
+            </p>
           </div>
           <div className="image-container">
             <div className="image-block">
@@ -54,6 +60,11 @@ const About = () => {
             display: flex;
           }
 
+          p > a {
+            text-decoration: none;
+            color: inherit;
+          }
+
           .text-container {
             flex: 1;
             margin-right: 15px;
@@ -66,8 +77,9 @@ const About = () => {
           .image-container {
             width: 100%;
             flex: 1;
-            margin-left: 15px;
             margin-top: 7px;
+            display: flex;
+            flex-direction: column;
           }
 
           .image-block {
@@ -83,6 +95,27 @@ const About = () => {
             position: absolute;
             top: 0;
             left: 0;
+          }
+
+          .contact-info-block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+          }
+
+          .contact-info {
+            text-align: center;
+          }
+
+          hr {
+            opacity: 0.25;
+            margin-top: 25px;
+            margin-bottom: 25px;
+          }
+
+          .contact-info span {
+            font-size: 140%;
           }
 
           @media (max-width: 768px) {

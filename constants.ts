@@ -19,10 +19,6 @@ const NAV_LINKS: Link[] = [
   {
     href: '/references',
     label: 'References'
-  },
-  {
-    href: '/contact',
-    label: 'Contact'
   }
 ]
 
