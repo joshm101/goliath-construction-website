@@ -18,6 +18,11 @@ const MobileNav = () => {
                 </Link>
               </li>
             ))}
+            <li>
+              <a href="tel:+1-310-902-6616">
+                (310) 902-6616
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -41,11 +46,14 @@ const MobileNav = () => {
             text-transform: uppercase;
           }
 
-          a {
+          li > * {
             padding: 20px;
-            display: block;
-            text-decoration: none;
             color: #ddd;
+            display: block;
+          }
+
+          a {
+            text-decoration: none;
           }
 
           .nav-container {
