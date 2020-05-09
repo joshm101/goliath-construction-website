@@ -33,7 +33,6 @@ const ProjectDetailsPage = ({ project }: ProjectDetailsPageComponent) => {
       <PageContentContainer>
         <h1>{project.name}</h1>
         <br />
-        <br />
         <GridList cellHeight={cellHeight} cols={columns}>
           {project.images.map(image => (
             <GridListTile key={image} cols={1}>
@@ -42,6 +41,21 @@ const ProjectDetailsPage = ({ project }: ProjectDetailsPageComponent) => {
           ))}
         </GridList>
       </PageContentContainer>
+      <style jsx>
+        {`
+          h1 {
+            font-weight: 500;
+            line-height: 0.9em;
+            margin-top: -3px;
+          }
+
+          @media (max-width: 500px) {
+            h1 {
+              font-size: 1.5em;
+            }
+          }
+        `}
+      </style>
     </Layout>
   )
 }
