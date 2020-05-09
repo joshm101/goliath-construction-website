@@ -36,10 +36,10 @@ const projects: Project[] = [
     id: 4
   },
   {
-    slug: '2149-keaton-ave',
+    slug: '2149-kelton-ave',
     thumbnailImage: 'https://goliath-construction-projects.s3-us-west-1.amazonaws.com/2149-kelton-ave/ISeko4s3iwcpah0000000000.jpeg',
     images: [],
-    name: '2149 Keaton Ave',
+    name: '2149 Kelton Ave',
     id: 5
   },
   {
