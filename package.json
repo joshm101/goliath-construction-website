@@ -12,6 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "4.9.13",
+    "@material-ui/icons": "4.9.1",
+    "aws-sdk": "^2.673.0",
     "clsx": "1.1.0",
     "next": "^9.3.1",
     "react": "^16.13.1",
