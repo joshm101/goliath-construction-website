@@ -48,6 +48,7 @@ const DesktopNav = () => {
             display: block;
             text-decoration: none;
             color: #ddd;
+            text-shadow: 0.5px 0.5px black;
           }
         `}
       </style>
