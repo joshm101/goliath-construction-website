@@ -93,6 +93,7 @@ const Layout: FunctionComponent = ({ children }) => {
           .logo h1 {
             font-size: 45px;
             line-height: 45px;
+            text-shadow: 0.5px 0.5px black;
           }
 
           .logo h2 {
@@ -100,6 +101,7 @@ const Layout: FunctionComponent = ({ children }) => {
             line-height: 50px;
             letter-spacing: 4px;
             font-weight: 400;
+            text-shadow: 0.5px 0.5px black;
           }
 
           .menu-button {
@@ -204,6 +206,10 @@ const Layout: FunctionComponent = ({ children }) => {
 
           .parallax-banner-layer-0 {
             filter: brightness(0.65);
+          }
+
+          img, div {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
           }
 
         `}
