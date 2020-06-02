@@ -185,7 +185,7 @@ const Index = () => {
       <style jsx global>
         {`
           body {
-            overflow: hidden;
+            overflow: hidden !important;
           }
         `}
       </style>
