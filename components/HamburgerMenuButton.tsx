@@ -27,6 +27,7 @@ const HamburgerMenuButton: FunctionComponent<HamburgerMenuButtonComponent> = ({ 
             width: 100%;
             height: 2.5px;
             background: #d3cec8;
+            box-shadow: 0 0px 0px rgba(0,0,0,0.12), 0 1px 0px rgba(0,0,0,0.24);
           }
         `}
       </style>
