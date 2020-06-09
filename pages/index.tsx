@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
 
 import Layout from '../components/Layout'
 import useWindowSize from '../hooks/useWindowSize'
 
-import { NAV_LINKS, GALLERY_IMAGES } from '../constants'
+import { GALLERY_IMAGES } from '../constants'
 
 const Index = () => {
   const [imagesLoading, setImagesLoading] = useState(true)
   const [currentImage, setCurrentImage] = useState(0)
   const [loadedImages, setLoadedImages] = useState([] as HTMLImageElement[])
   const { width: windowWidth, height: windowHeight } = useWindowSize()
-  console.log('width: ', windowWidth)
-  console.log('height: ', windowHeight)
 
   const loadImage = (imageSrc: string) => {
     return new Promise<HTMLImageElement>((resolve, reject) => {
@@ -31,7 +28,6 @@ const Index = () => {
     ).then((images: HTMLImageElement[]) => {
       setImagesLoading(false)
       setLoadedImages(images)
-      console.log('images: ', images)
     })
   }, [])
 
@@ -91,7 +87,6 @@ const Index = () => {
         const calculatedImageHeight = windowHeight
 
         const ratioDecimal = originalImageWidth / originalImageHeight
-        console.log('ratioDecimal: ', ratioDecimal)
         const calculatedImageWidth = calculatedImageHeight * ratioDecimal
 
         return {
@@ -141,7 +136,20 @@ const Index = () => {
     windowHeight as number
   )
 
-  console.log('imageDimensions: ', imageDimensions)
+  const getImageContainerStyle = (imageIndex: number) => {
+    if (imageIndex === currentImage) {
+      return { opacity: 1 }
+    }
+
+    return { opacity: 0 }
+  }
+
+  const getImagesContainerStyle = () => {
+    return {
+      opacity: imagesLoading ? 0 : 1,
+      transition: 'opacity .4s ease-out'
+    }
+  }
 
   const imageStyle = {
     height: imageDimensions.container.height,
@@ -151,10 +159,21 @@ const Index = () => {
   return (
     <Layout>
       <div className="home-image-wrapper">
-        <img
-          src={GALLERY_IMAGES[currentImage]}
-          style={imageStyle}
-        />
+        {GALLERY_IMAGES.map((image, index) =>
+          <div style={getImagesContainerStyle()}>
+            <div
+              key={image}
+              className="image-container"
+              style={getImageContainerStyle(index)}
+            >
+              <img
+                key={image}
+                src={image}
+                style={imageStyle}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       <style jsx>
@@ -178,6 +197,15 @@ const Index = () => {
             position: relative;
             left: ${imageDimensions.imageOffset.left};
             top: ${imageDimensions.imageOffset.top};
+          }
+
+          .image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity .4s ease-out;
           }
         `}
       </style>
