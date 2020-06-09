@@ -190,6 +190,8 @@ const Index = () => {
             align-items: center;
             justify-content: center;
             overflow: hidden;
+
+            z-index: 8;
           }
 
           img {

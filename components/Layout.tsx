@@ -14,6 +14,7 @@ import HamburgerMenuButton from './HamburgerMenuButton'
 
 const Layout: FunctionComponent = ({ children }) => {
   const [navOpen, setNavOpen] = useState(false)
+  const [navHasOpened, setNavHasOpened] = useState(false)
   const [headerOpacity, setHeaderOpacity] = useState(0)
 
   useEffect(() => {
@@ -46,10 +47,17 @@ const Layout: FunctionComponent = ({ children }) => {
     transition: 'background-color 200ms'
   }
 
+  const onNavMenuButtonClick = () => {
+    setNavHasOpened(true)
+    setNavOpen(!navOpen)
+  }
+
   return (
     <ParallaxProvider>
       <div className="container">
-        <MobileNav />
+        <div style={{ opacity: !navHasOpened ? 0 : 1 }}>
+          <MobileNav />
+        </div>
         <div className={classes} style={{ overflow: 'hidden' }}>
           <Header style={headerStyles}>
             <div className="logo">
@@ -61,7 +69,7 @@ const Layout: FunctionComponent = ({ children }) => {
             </div>
             <div className="menu-button">
               <HamburgerMenuButton
-                onClick={() => setNavOpen(!navOpen)}
+                onClick={onNavMenuButtonClick}
               />
             </div>
           </Header>
