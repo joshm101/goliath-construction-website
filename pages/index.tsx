@@ -9,7 +9,7 @@ const Index = () => {
   const [imagesLoading, setImagesLoading] = useState(true)
   const [currentImage, setCurrentImage] = useState(0)
   const [loadedImages, setLoadedImages] = useState([] as HTMLImageElement[])
-  const { width: windowWidth, height: windowHeight } = useWindowSize()
+  const { width: windowWidth = 0, height: windowHeight = 0 } = useWindowSize()
 
   const loadImage = (imageSrc: string) => {
     return new Promise<HTMLImageElement>((resolve, reject) => {
@@ -48,7 +48,7 @@ const Index = () => {
     },
     imageOffset: {
       left: string,
-      top: string
+      top?: string
     }
   }
 
@@ -74,6 +74,9 @@ const Index = () => {
       height: originalImageHeight
     } = image
 
+    console.log('windowWidth: ', windowWidth)
+    console.log('windowHeight: ', windowHeight)
+
     if (windowWidth > windowHeight) {
       const proposedImageWidth = windowWidth
 
@@ -83,8 +86,12 @@ const Index = () => {
         proposedImageWidth * ratioDecimal
       )
 
+      console.log('proposedImageHeight: ', proposedImageHeight)
+
       if (proposedImageHeight < windowHeight) {
         const calculatedImageHeight = windowHeight
+
+        console.log('calculatedImageHeight: ', calculatedImageHeight)
 
         const ratioDecimal = originalImageWidth / originalImageHeight
         const calculatedImageWidth = calculatedImageHeight * ratioDecimal
@@ -96,7 +103,7 @@ const Index = () => {
           },
           imageOffset: {
             left: `-${(calculatedImageWidth - windowWidth) / 2}px`,
-            top: `-${(calculatedImageHeight - windowHeight) / 2}px`
+            // top: `-${(calculatedImageHeight - windowHeight) / 2}px`
           }
         }
       }
@@ -147,7 +154,8 @@ const Index = () => {
   const getImagesContainerStyle = () => {
     return {
       opacity: imagesLoading ? 0 : 1,
-      transition: 'opacity .4s ease-out'
+      transition: 'opacity .4s ease-out',
+      position: 'relative' as 'relative'
     }
   }
 
@@ -158,44 +166,45 @@ const Index = () => {
 
   return (
     <Layout>
-      <div className="home-image-wrapper">
-        {GALLERY_IMAGES.map((image, index) =>
-          <div style={getImagesContainerStyle()}>
-            <div
-              key={image}
-              className="image-container"
-              style={getImageContainerStyle(index)}
-            >
-              <img
-                key={image}
-                src={image}
-                style={imageStyle}
-              />
+      <div className="home-content">
+        <div className="home-images-wrapper">
+          {GALLERY_IMAGES.map((image, index) =>
+            <div key={image} style={getImagesContainerStyle()}>
+              <div
+                className="image-container"
+                style={getImageContainerStyle(index)}
+              >
+                <img
+                  src={image}
+                  style={imageStyle}
+                />
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       <style jsx>
         {`
-          .home-image-wrapper {
-            position: relative;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: ${imageDimensions.container.height};
-            width: ${imageDimensions.container.width};
+          .home-content {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: start;
+            justify-content: start;
             overflow: hidden;
 
             z-index: 8;
           }
 
+          .home-images-wrapper {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: ${windowHeight - 1}px;
+            text-align: left;
+            overflow: hidden;
+          }
+
           img {
-            width: ${imageDimensions.container.width};
             position: relative;
             left: ${imageDimensions.imageOffset.left};
             top: ${imageDimensions.imageOffset.top};
@@ -205,17 +214,7 @@ const Index = () => {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
             transition: opacity .4s ease-out;
-          }
-        `}
-      </style>
-
-      <style jsx global>
-        {`
-          body {
-            overflow: hidden !important;
           }
         `}
       </style>

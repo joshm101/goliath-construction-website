@@ -73,7 +73,7 @@ const Layout: FunctionComponent = ({ children }) => {
               />
             </div>
           </Header>
-          <div style={{ height: '100%' }}>
+          <div style={{ height: '100%' }} onClick={() => setNavOpen(false)}>
             {children}
           </div>
         </div>
