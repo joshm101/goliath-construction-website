@@ -207,6 +207,10 @@ const Layout: FunctionComponent = ({ children }) => {
             margin: 0;
             overflow: ${navOpen ? 'hidden' : 'auto'};
             font-family: 'Oswald', sans-serif;
+            height: 100vh;
+          }
+          html {
+            height: 100vh;
           }
           h1, h2, h3, h4, h5, h6 {
             margin: 0;
