@@ -74,9 +74,6 @@ const Index = () => {
       height: originalImageHeight
     } = image
 
-    console.log('windowWidth: ', windowWidth)
-    console.log('windowHeight: ', windowHeight)
-
     if (windowWidth > windowHeight) {
       const proposedImageWidth = windowWidth
 
@@ -86,12 +83,10 @@ const Index = () => {
         proposedImageWidth * ratioDecimal
       )
 
-      console.log('proposedImageHeight: ', proposedImageHeight)
 
       if (proposedImageHeight < windowHeight) {
         const calculatedImageHeight = windowHeight
 
-        console.log('calculatedImageHeight: ', calculatedImageHeight)
 
         const ratioDecimal = originalImageWidth / originalImageHeight
         const calculatedImageWidth = calculatedImageHeight * ratioDecimal
@@ -103,7 +98,6 @@ const Index = () => {
           },
           imageOffset: {
             left: `-${(calculatedImageWidth - windowWidth) / 2}px`,
-            // top: `-${(calculatedImageHeight - windowHeight) / 2}px`
           }
         }
       }
