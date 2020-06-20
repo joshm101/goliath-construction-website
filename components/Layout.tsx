@@ -88,6 +88,7 @@ const Layout: FunctionComponent = ({ children }) => {
             z-index: 10;
             position: relative;
             background: #171717;
+            min-height: 100vh;
           }
           button {
             right: 0;
