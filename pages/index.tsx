@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 
 import Layout from '../components/Layout'
 import useWindowSize from '../hooks/useWindowSize'
@@ -160,6 +161,9 @@ const Index = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>Goliath Construction</title>
+      </Head>
       <div className="home-content">
         <div className="home-images-wrapper">
           {GALLERY_IMAGES.map((image, index) =>

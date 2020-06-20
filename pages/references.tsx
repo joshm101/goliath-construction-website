@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import { ParallaxBanner } from 'react-scroll-parallax'
 
 import Layout from '../components/Layout'
@@ -36,6 +37,9 @@ const References = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>References | Goliath Construction</title>
+      </Head>
       <ParallaxBanner {...parallaxProps} />
       <PageContentContainer>
         <h1 className="references-header">

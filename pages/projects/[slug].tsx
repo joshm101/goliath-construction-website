@@ -6,6 +6,7 @@ import React, {
 } from 'react'
 import aws from 'aws-sdk'
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
 import { ParallaxBanner } from 'react-scroll-parallax'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
@@ -153,6 +154,9 @@ const ProjectDetailsPage = ({ project }: ProjectDetailsPageComponent) => {
 
   return (
     <Layout>
+      <Head>
+        <title>{project.name} | Goliath Construction</title>
+      </Head>
       <ParallaxBanner {...parallaxProps} />
       <PageContentContainer>
         <h1>{project.name}</h1>
