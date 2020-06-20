@@ -1,6 +1,7 @@
 import React, {
   FunctionComponent,
   useState,
+  useEffect,
   useCallback
 } from 'react'
 import aws from 'aws-sdk'
@@ -32,6 +33,39 @@ interface ProjectDetailsPageComponent extends FunctionComponent {
 }
 
 const ProjectDetailsPage = ({ project }: ProjectDetailsPageComponent) => {
+  interface LoadedImages {
+    [image: string]: boolean
+  }
+
+  const initialLoadedImagesState = project.images.reduce((accumulator, image) => {
+    return {
+      ...accumulator,
+      [image]: false
+    }
+  }, {})
+  const [loadedImages, setLoadedImages] = (
+    useState(initialLoadedImagesState as LoadedImages)
+  )
+
+  useEffect(() => {
+    const onImageLoad = (image: string) => {
+      setLoadedImages(loadedImages => {
+        return {
+          ...loadedImages,
+          [image]: true
+        }
+      })
+    }
+
+    project.images.forEach(projectImage => {
+      const image = new Image()
+      image.src = projectImage
+
+      image.addEventListener('load', () => onImageLoad(image.src))
+    })
+
+  }, [])
+
   const parallaxProps = makeParallaxProps(
     project.thumbnailImage,
     { amount: 0.2 }
@@ -96,6 +130,27 @@ const ProjectDetailsPage = ({ project }: ProjectDetailsPageComponent) => {
 
   const { columns, cellHeight } = useGrid()
 
+  const getTileStyle = (image: string) => {
+    const imageHasLoaded = loadedImages[image]
+
+    const baseStyle = {
+      cursor: 'pointer',
+      transition: 'opacity .3s ease-out'
+    }
+
+    if (imageHasLoaded) {
+      return {
+        ...baseStyle,
+        opacity: 1
+      }
+    }
+
+    return {
+      ...baseStyle,
+      opacity: 0
+    }
+  }
+
   return (
     <Layout>
       <ParallaxBanner {...parallaxProps} />
@@ -108,7 +163,7 @@ const ProjectDetailsPage = ({ project }: ProjectDetailsPageComponent) => {
               key={image}
               cols={1}
               onClick={() => onImageClick(index)}
-              style={{ cursor: 'pointer' }}
+              style={getTileStyle(image)}
             >
               <img src={image} />
             </GridListTile>
