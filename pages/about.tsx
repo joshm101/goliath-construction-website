@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ParallaxBanner } from 'react-scroll-parallax'
 
 import Layout from '../components/Layout'
@@ -18,6 +18,33 @@ const About = () => {
     PARALLAX_IMAGE,
     { amount: 0.2 }
   )
+
+  const [pageImageLoaded, setPageImageLoaded] = useState(false)
+
+  useEffect(() => {
+    const image = new Image()
+    image.src = PAGE_IMAGE
+
+    image.addEventListener('load', () => setPageImageLoaded(true))
+  }, [])
+
+  const getPageImageStyle = () => {
+    const baseStyle = {
+      transition: 'opacity .3s ease-out'
+    }
+
+    if (pageImageLoaded) {
+      return {
+        ...baseStyle,
+        opacity: 1
+      }
+    }
+
+    return {
+      ...baseStyle,
+      opacity: 0
+    }
+  }
 
   return (
     <Layout>
@@ -49,7 +76,7 @@ const About = () => {
           </div>
           <div className="image-container">
             <div className="image-block">
-              <img src={PAGE_IMAGE} />
+              <img src={PAGE_IMAGE} style={getPageImageStyle()} />
             </div>
           </div>
         </div>

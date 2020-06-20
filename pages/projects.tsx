@@ -1,4 +1,8 @@
-import React, { useCallback } from 'react'
+import React, {
+  useState,
+  useCallback,
+  useEffect
+} from 'react'
 import { ParallaxBanner } from 'react-scroll-parallax'
 import { useRouter } from 'next/router'
 import GridList from '@material-ui/core/GridList'
@@ -11,7 +15,7 @@ import useGrid from '../hooks/useGrid'
 
 import { makeParallaxProps } from '../utils'
 
-import projects from '../data/projects'
+import projects, { Project } from '../data/projects'
 
 const PARALLAX_IMAGE = (
   'https://goliath-construction-gallery-images.s3-us-west-1.amazonaws.com/test-gallery-image-1.jpeg'
@@ -19,11 +23,44 @@ const PARALLAX_IMAGE = (
 
 
 const Projects = () => {
+  interface LoadedImages {
+    [image: string]: boolean
+  }
+
+  const initialLoadedImagesState = projects.reduce((accumulator, project) => {
+    return {
+      ...accumulator,
+      [project.thumbnailImage]: false
+    }
+  }, {})
+
+  const [loadedImages, setLoadedImages] = (
+    useState(initialLoadedImagesState as LoadedImages)
+  )
   const router = useRouter()
   const parallaxProps = makeParallaxProps(
     PARALLAX_IMAGE,
     { amount: 0.2 }
   )
+
+  useEffect(() => {
+    const onImageLoad = (image: string) => {
+      setLoadedImages(loadedImages => {
+        return {
+          ...loadedImages,
+          [image]: true
+        }
+      })
+    }
+
+    projects.forEach(project => {
+      const image = new Image()
+      image.src = project.thumbnailImage
+
+      image.addEventListener('load', () => onImageLoad(image.src))
+    })
+
+  }, [])
 
   const { columns, cellHeight } = useGrid()
 
@@ -37,6 +74,26 @@ const Projects = () => {
     []
   )
 
+  const getTileStyle = (project: Project) => {
+    const imageHasLoaded = loadedImages[project.thumbnailImage]
+
+    const baseStyle = {
+      transition: 'opacity .3s ease-out'
+    }
+
+    if (imageHasLoaded) {
+      return {
+        ...baseStyle,
+        opacity: 1
+      }
+    }
+
+    return {
+      ...baseStyle,
+      opacity: 0
+    }
+  }
+
   return (
     <Layout>
       <ParallaxBanner {...parallaxProps} />
@@ -46,6 +103,7 @@ const Projects = () => {
             <GridListTile
               key={project.id}
               cols={1}
+              style={getTileStyle(project)}
             >
               <img
                 src={project.thumbnailImage}
