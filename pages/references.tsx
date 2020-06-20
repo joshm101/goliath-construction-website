@@ -2,7 +2,6 @@ import React from 'react'
 import { ParallaxBanner } from 'react-scroll-parallax'
 
 import Layout from '../components/Layout'
-import DummyContent from '../components/DummyContent'
 import PageContentContainer from '../components/PageContentContainer'
 
 import { makeParallaxProps } from '../utils'
@@ -17,12 +16,61 @@ const References = () => {
     { amount: 0.2 }
   )
 
+  interface Reference {
+    id: number,
+    name: string,
+    designation?: string
+  }
+
+  const references: Reference[] = [
+    { id: 1, name: 'Transform LP' },
+    { id: 2, name: 'F&G Development' },
+    { id: 3, name: 'Peter Brunk', designation: 'Peter Brunk LLC' },
+    { id: 4, name: 'Dave Witherow', designation: 'Investor' },
+    { id: 5, name: 'Gabriel Grouch', designation: 'Project Manager' },
+    { id: 6, name: 'Sky Reiss', designation: 'Project Manageer' },
+    { id: 7, name: 'Ryan Sullivan', designation: 'Project Manager' },
+    { id: 8, name: 'Nancy Kuai', designation: 'Custom Home' },
+    { id: 9, name: 'Greg Koltsov', designation: 'Investor' }
+  ]
+
   return (
     <Layout>
       <ParallaxBanner {...parallaxProps} />
       <PageContentContainer>
-        <DummyContent />
+        <h1 className="references-header">
+          Professional
+        </h1>
+        {references.map(reference => (
+          <div key={reference.id} className="reference">
+            <span>{reference.name}</span>
+            {reference.designation &&
+            <span className="designation">
+              &nbsp;&nbsp;({reference.designation})
+            </span>
+            }
+          </div>
+        ))}
       </PageContentContainer>
+      <style jsx>
+        {`
+          .references-header {
+            margin-bottom: 12px;
+          }
+        `}
+      </style>
+      <style jsx global>
+        {`
+          .reference {
+            display: flex;
+            padding: 12px 0;
+            font-size: 1.2em;
+          }
+          .designation {
+            opacity: 0.5;
+          }
+        `}
+      </style>
     </Layout>
   )
 }
