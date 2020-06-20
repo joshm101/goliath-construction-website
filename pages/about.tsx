@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Head from 'next/head'
 import { ParallaxBanner } from 'react-scroll-parallax'
 
 import Layout from '../components/Layout'
@@ -48,6 +49,9 @@ const About = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>About | Goliath Construction</title>
+      </Head>
       <ParallaxBanner {...parallaxProps } />
       <PageContentContainer>
         <div className="about-content">

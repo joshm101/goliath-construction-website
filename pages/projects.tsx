@@ -3,6 +3,7 @@ import React, {
   useCallback,
   useEffect
 } from 'react'
+import Head from 'next/head'
 import { ParallaxBanner } from 'react-scroll-parallax'
 import { useRouter } from 'next/router'
 import GridList from '@material-ui/core/GridList'
@@ -96,6 +97,9 @@ const Projects = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>Projects | Goliath Construction</title>
+      </Head>
       <ParallaxBanner {...parallaxProps} />
       <PageContentContainer>
         <GridList cellHeight={cellHeight} cols={columns}>

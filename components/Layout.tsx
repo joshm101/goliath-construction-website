@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useRef
 } from 'react'
+import Head from 'next/head'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import clsx from 'clsx'
 
@@ -11,6 +12,8 @@ import MobileNav from './MobileNav'
 import DesktopNav from './DesktopNav'
 import Header from './Header'
 import HamburgerMenuButton from './HamburgerMenuButton'
+
+import { META_DESCRIPTION } from '../constants'
 
 const Layout: FunctionComponent = ({ children }) => {
   const [navOpen, setNavOpen] = useState(false)
@@ -54,6 +57,13 @@ const Layout: FunctionComponent = ({ children }) => {
 
   return (
     <ParallaxProvider>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="description"
+          content={META_DESCRIPTION}
+        />
+      </Head>
       <div className="container">
         <div style={{ opacity: !navHasOpened ? 0 : 1 }}>
           <MobileNav />
