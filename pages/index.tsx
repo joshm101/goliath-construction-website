@@ -33,13 +33,17 @@ const Index = () => {
   }, [])
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       if (currentImage === GALLERY_IMAGES.length - 1) {
         return setCurrentImage(0)
       }
 
       setCurrentImage(currentImage + 1)
     }, 5000)
+
+    return function cleanup() {
+      clearTimeout(timeout)
+    }
   }, [currentImage, setCurrentImage])
 
   interface ImageDimensions {
