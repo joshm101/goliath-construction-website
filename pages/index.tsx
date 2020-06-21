@@ -169,6 +169,8 @@ const Index = () => {
         <title>Goliath Construction</title>
         <meta property="og:title" content="Goliath Construction" />
         <meta property="og:image" content={GALLERY_IMAGES[0]} />
+        <meta property="twitter:title" content="Goliath Construction" />
+        <meta property="twitter:image" content={GALLERY_IMAGES[0]} />
       </Head>
       <div className="home-content">
         <div className="home-images-wrapper">

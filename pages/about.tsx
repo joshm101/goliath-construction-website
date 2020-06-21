@@ -53,6 +53,8 @@ const About = () => {
         <title>About | Goliath Construction</title>
         <meta property="og:title" content="About | Goliath Construction" />
         <meta property="og:image" content={PAGE_IMAGE} />
+        <meta property="twitter:title" content="About | Goliath Construction" />
+        <meta property="twitter:image" content={PAGE_IMAGE} />
       </Head>
       <ParallaxBanner {...parallaxProps } />
       <PageContentContainer>
