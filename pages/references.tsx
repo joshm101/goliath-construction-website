@@ -39,6 +39,8 @@ const References = () => {
     <Layout>
       <Head>
         <title>References | Goliath Construction</title>
+        <meta property="og:title" content="References | Goliath Construction" />
+        <meta property="og:image" content={PARALLAX_IMAGE} />
       </Head>
       <ParallaxBanner {...parallaxProps} />
       <PageContentContainer>

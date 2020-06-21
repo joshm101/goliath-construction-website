@@ -60,10 +60,12 @@ const Layout: FunctionComponent = ({ children }) => {
     <ParallaxProvider>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="description"
           content={META_DESCRIPTION}
         />
+        <meta property="og:type" content="business" />
       </Head>
       <div className="container">
         <div style={{ opacity: !navHasOpened ? 0 : 1 }}>

@@ -99,6 +99,8 @@ const Projects = () => {
     <Layout>
       <Head>
         <title>Projects | Goliath Construction</title>
+        <meta property="og:title" content="Projects | Goliath Construction" />
+        <meta property="og:image" content={PARALLAX_IMAGE} />
       </Head>
       <ParallaxBanner {...parallaxProps} />
       <PageContentContainer>
