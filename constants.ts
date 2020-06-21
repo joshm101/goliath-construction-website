@@ -29,7 +29,7 @@ const GALLERY_IMAGES = [
   'https://goliath-construction-gallery-images.s3-us-west-1.amazonaws.com/test-gallery-image-4.jpeg'
 ]
 
-const META_DESCRIPTION = 'Goliath Construction is a construction company based in Los Angeles. The company was founded by Alberto Conseco.'
+const META_DESCRIPTION = 'Goliath Construction is a construction company based in Los Angeles. The company was founded by Alberto Canseco.'
 
 export {
   NAV_LINKS,

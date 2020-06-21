@@ -156,6 +156,10 @@ const ProjectDetailsPage = ({ project }: ProjectDetailsPageComponent) => {
     <Layout>
       <Head>
         <title>{project.name} | Goliath Construction</title>
+        <meta property="og:title" content={`${project.name} | Goliath Construction`} />
+        <meta property="og:image" content={project.thumbnailImage} />
+        <meta property="twitter:image" content={project.thumbnailImage} />
+        <meta property="twitter:title" content={`${project.name} | Goliath Construction`} />
       </Head>
       <ParallaxBanner {...parallaxProps} />
       <PageContentContainer>

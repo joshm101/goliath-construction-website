@@ -64,6 +64,9 @@ const Layout: FunctionComponent = ({ children }) => {
           name="description"
           content={META_DESCRIPTION}
         />
+        <meta property="og:type" content="business" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:description" content={META_DESCRIPTION} />
       </Head>
       <div className="container">
         <div style={{ opacity: !navHasOpened ? 0 : 1 }}>
