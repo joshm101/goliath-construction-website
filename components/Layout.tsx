@@ -5,6 +5,7 @@ import React, {
   useRef
 } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import clsx from 'clsx'
 
@@ -70,10 +71,12 @@ const Layout: FunctionComponent = ({ children }) => {
         </div>
         <div className={classes} style={{ overflow: 'hidden' }}>
           <Header style={headerStyles}>
-            <div className="logo">
-              <h1>G</h1>
-              <h2>Goliath Construction</h2>
-            </div>
+            <Link href="/">
+              <div className="logo" style={{ cursor: 'pointer' }}>
+                <h1>G</h1>
+                <h2>Goliath Construction</h2>
+              </div>
+            </Link>
             <div className="desktop-nav-container">
               <DesktopNav />
             </div>
